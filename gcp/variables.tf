@@ -3,7 +3,7 @@ variable "project_id" {
  }
 
 variable "credentials_file" {
-    default = ["../..//key/google_service_account.json"]
+    default = ["..//key/google_service_account.json"]
  }
 
 variable "region" {
