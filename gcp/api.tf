@@ -5,7 +5,9 @@ variable "gcp_service_list" {
   type = list(string)
   default = [
     "compute.googleapis.com",
-    "container.googleapis.com"
+    "container.googleapis.com",
+    "pubsub.googleapis.com",
+    "dns.googleapis.com"
   ]
 }
 
