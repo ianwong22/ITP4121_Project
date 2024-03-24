@@ -10,8 +10,3 @@ terraform {
   }
   required_version = ">= 0.14"
 }
-
-provider "aws" {
-  region = "us-east-1"
-  shared_credentials_files = ["../key/aws_credentials.ini"]
-}
