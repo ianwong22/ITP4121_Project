@@ -1,24 +1,21 @@
-# API
-resource "google_project_service" "project" {
-  project = var.project_id
-  service = "compute.googleapis.com"
-  timeouts {
-    create = "30m"
-    update = "40m"
-  }
+#API
 
-  disable_dependent_services = true
-
+variable "gcp_service_list" {
+  description ="The list of apis necessary for the project"
+  type = list(string)
+  default = [
+    "compute.googleapis.com",
+    "container.googleapis.com"
+  ]
 }
 
-resource "google_project_service" "project" {
+resource "google_project_service" "gcp_services" {
+  for_each = toset(var.gcp_service_list)
   project = var.project_id
-  service = "container.googleapis.com"
+  service = each.key
   timeouts {
     create = "30m"
     update = "40m"
   }
-
   disable_dependent_services = true
-
 }

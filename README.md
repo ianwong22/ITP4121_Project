@@ -62,24 +62,27 @@ https://github.com/hashicorp/learn-terraform-multicloud-kubernetes?tab=readme-ov
 Learn Terraform - Deploy Federated Multi-Cloud Kubernetes Clusters <br>
 This is a companion repository with part of the configuration for the Deploy Federated Multi-Cloud Kubernetes Clusters tutorial. It contains Terraform configuration files for you to use to learn deploy a Consul-federated multi-cluster Kubernetes setup. <br>
 
-Some issue must fix <br>
-AWS Learner Lab no create IAM role premission
+## Issue
+If you using this terraform <br>
+AWS Learner Lab can't don't have IAM role premission <br>
+To fix it <br>
 After <code> terraform init </code> <br>
 edit <code>aws/.terraform/modules/eks/main.tf</code> line 4 <br>
 From <br>
 ```tf
-data "aws_iam_session_context" "current" { <br>
-  arn = data.aws_caller_identity.current.arn <br>
+data "aws_iam_session_context" "current" {
+  arn = data.aws_caller_identity.current.arn
 } 
 ```
 To <br>
 ```tf
-data "aws_iam_session_context" "current" { <br>
+data "aws_iam_session_context" "current" {
     arn = var.lab_arn 
 } 
 ```
 and add the line in <code> aws/.terraform/modules/eks/variables.tf </code> <br>
+Replace <b>[arnRole]</b> to you Lab ARN
 ```tf
 variable "lab_arn" {
-  default     = "[arnRole]" 
+  default = "[arnRole]" 
 }
