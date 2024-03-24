@@ -25,16 +25,13 @@ GCP: <code>gcloud help</code> <br>
 Azure: <code>az help</code> <br>
 terraform: <code>terraform -help</code> <br>
 
-## Login <br>
-AWS: <code>aws help</code> <br>
-GCP: <code>gcloud auth application-default login </code> <br>
-Azure: <code>az help</code> <br>
+## Setup <br>
 
-
-
-GCP:
-Set current workspace
-<code> gcloud config set project [VALUE] </code>
+### GCP
+Login <br>
+<code>gcloud auth application-default login </code> <br>
+Set current workspace <br>
+<code> gcloud config set project [VALUE] </code> <br>
 Create Service account
 ```sh
 gcloud iam service-accounts create [SERVICE_ACCOUNT_NAME] \
@@ -52,7 +49,7 @@ gcloud iam service-accounts keys create [FILE_NAME].json \
   --iam-account [SERVICE_ACCOUNT_EMAIL]
 ```
 
-Azure <br>
+### Azure <br>
 Login: <code>az login</code> <br>
 set the active subscription using the id <br>
 <code>az account set -s "[id]"</code> <br>
