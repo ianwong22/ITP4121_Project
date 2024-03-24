@@ -1,0 +1,8 @@
+/*.venv
+/*.terraform
+*.terraform.lock.hcl
+/key/*
+terraform.*
+terraform.*.*
+/.scannerwork
+*.terraform
