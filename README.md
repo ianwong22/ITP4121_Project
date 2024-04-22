@@ -61,28 +61,18 @@ Some command of this repo following HashiCorp <br>
 https://github.com/hashicorp/learn-terraform-multicloud-kubernetes?tab=readme-ov-file <br>
 Learn Terraform - Deploy Federated Multi-Cloud Kubernetes Clusters <br>
 This is a companion repository with part of the configuration for the Deploy Federated Multi-Cloud Kubernetes Clusters tutorial. It contains Terraform configuration files for you to use to learn deploy a Consul-federated multi-cluster Kubernetes setup. <br>
+## Credentials
+To entry cloud provider credentials, create the folder as following path:
+```
+/key
+-aws_credentials.ini
+-azure_rbac.txt
+-google_serice_account.json
+```
+## Connecting to kubectl
 
-## Issue
-If you using this terraform <br>
-AWS Learner Lab can't don't have IAM role premission <br>
-To fix it <br>
-After <code> terraform init </code> <br>
-edit <code>aws/.terraform/modules/eks/main.tf</code> line 4 <br>
-From <br>
-```tf
-data "aws_iam_session_context" "current" {
-  arn = data.aws_caller_identity.current.arn
-} 
-```
-To <br>
-```tf
-data "aws_iam_session_context" "current" {
-    arn = var.lab_arn 
-} 
-```
-and add the line in <code> aws/.terraform/modules/eks/variables.tf </code> <br>
-Replace <b>[arnRole]</b> to you Lab ARN
-```tf
-variable "lab_arn" {
-  default = "[arnRole]" 
-}
+<code>
+az aks get-credentials --resource-group resource-group --name name
+</code>
+
+and apply the file to kube nodes

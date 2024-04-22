@@ -6,6 +6,8 @@ terraform.*
 terraform.*.*
 /.scannerwork
 *.terraform
+/old
+/.terraform
 
 # aks/terraform.tfvars
 
