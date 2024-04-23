@@ -18,7 +18,7 @@ spec:
           image: ianwong22/microblog:lastest
           env:
            - name: SQLALCHEMY_DATABASE_URI
-             value: "itp4121-database.csawawd5zrbg.us-east-1.rds.amazonaws.com"
+             value: ""
           ports:
             - name: tcp
               containerPort: 80
