@@ -14,8 +14,8 @@ resource "aws_db_instance" "itp4121" {
   allocated_storage      = 5
   engine                 = "postgres"
   engine_version         = "14.11"
-  username               = "postgres"
-  password               = "postgres"
+  username               = var.db_user
+  password               = var.db_password
   db_subnet_group_name   = aws_db_subnet_group.vpc.name
   vpc_security_group_ids = [aws_security_group.rds.id]
   parameter_group_name   = aws_db_parameter_group.itp4121.name

@@ -14,3 +14,8 @@ output "kubernetes_cluster_name" {
 output "host" {
   value = "${azurerm_kubernetes_cluster.default.kube_config.0.host}"
 }
+
+output "kube_config" {
+  sensitive = true
+  value     = azurerm_kubernetes_cluster.default.kube_config_raw
+}

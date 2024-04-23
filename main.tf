@@ -12,3 +12,6 @@ module "azure" {
   password        = local.azure_credentials.password
 }
 
+module "gcp" {
+  source          = "./gcp"
+}

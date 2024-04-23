@@ -27,11 +27,19 @@ resource "azurerm_kubernetes_cluster" "default" {
   dns_prefix          = "${random_pet.prefix.id}-k8s"
   kubernetes_version  = "1.29.2"
 
+  network_profile {
+    network_plugin     = "azure"
+    network_policy     = "calico"
+    dns_service_ip     = "10.0.3.10"
+    service_cidr       = "10.0.3.0/24"
+  }
+
   default_node_pool {
-    name            = "default"
+    name            = "defyault"
     node_count      = 2
     vm_size         = "Standard_D2_v2"
     os_disk_size_gb = 30
+    vnet_subnet_id  = azurerm_subnet.subnet1.id
   }
 
   service_principal {

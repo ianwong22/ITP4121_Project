@@ -9,3 +9,11 @@ variable "region" {
 variable "lab_arn" {
   default     = "arn:aws:iam::056977427073:role/LabRole"
 }
+
+variable "db_user" {
+  default     = "postgres"
+}
+
+variable "db_password" {
+  default     = "postgres"
+}

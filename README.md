@@ -70,9 +70,13 @@ To entry cloud provider credentials, create the folder as following path:
 -google_serice_account.json
 ```
 ## Connecting to kubectl
-
+Azure
 <code>
-az aks get-credentials --resource-group resource-group --name name
+az aks get-credentials --resource-group your-resource-group --name your-name
 </code>
 
+GCP
+<code>
+gcloud container clusters get-credentials itp4121-gke-cluster --region your-region --project your-project-id
+</code>
 and apply the file to kube nodes

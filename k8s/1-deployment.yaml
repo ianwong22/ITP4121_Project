@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: web-v1
+  namespace: default # This is the default namespace
 spec:
   replicas: 2
   selector: 
@@ -17,7 +18,7 @@ spec:
           image: ianwong22/microblog:lastest
           env:
            - name: SQLALCHEMY_DATABASE_URI
-             value: ""
+             value: "itp4121-database.csawawd5zrbg.us-east-1.rds.amazonaws.com"
           ports:
             - name: tcp
               containerPort: 80
