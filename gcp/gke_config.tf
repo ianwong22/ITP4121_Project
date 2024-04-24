@@ -29,3 +29,13 @@ resource "kubernetes_manifest" "service_public_gke" {
   manifest = yamldecode(data.local_file.service_public.content)
 }
 
+# Apply the private Service configuration
+data "local_file" "service_private" {
+  filename = "${path.module}/../k8s/3-service.yaml"
+}
+
+resource "kubernetes_manifest" "service_private_gke" {
+  provider = kubernetes.gke  
+  manifest = yamldecode(data.local_file.service_private.content)
+
+}

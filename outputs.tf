@@ -28,3 +28,7 @@ output "gke_region" {
 output "gke_project" {
     value = module.gcp.project_id
 }
+
+output "name_servers" {
+    value = module.gcp.name_servers
+}

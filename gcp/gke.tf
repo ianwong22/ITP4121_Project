@@ -24,4 +24,8 @@ resource "google_container_node_pool" "primary" {
       "https://www.googleapis.com/auth/monitoring",
     ]
   }
+  autoscaling {
+      min_node_count = 1
+      max_node_count = 2
+  }
 }

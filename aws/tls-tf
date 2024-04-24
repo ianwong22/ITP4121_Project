@@ -1,0 +1,41 @@
+provider "tls" {}
+
+resource "tls_private_key" "private_key" {
+  algorithm = "RSA"
+}
+
+resource "tls_cert_request" "req" {
+  key_algorithm   = "RSA"
+  private_key_pem = tls_private_key.private_key.private_key_pem
+
+  subject {
+    common_name  = "itp4121.ian.tech"
+    organization = "Ian Tech"
+  }
+
+  dns_names = ["itp4121.ian.tech"]
+}
+
+resource "tls_locally_signed_cert" "cert" {
+  cert_request_pem = tls_cert_request.req.cert_request_pem
+  ca_key_algorithm = "RSA"
+  ca_private_key_pem = tls_private_key.private_key.private_key_pem
+  ca_cert_pem        = tls_self_signed_cert.ca.cert_pem
+
+  validity_period_hours = 8760
+  early_renewal_hours   = 720
+
+  allowed_uses = [
+    "key_encipherment",
+    "digital_signature",
+    "server_auth",
+  ]
+}
+
+output "certificate_pem" {
+  value = tls_locally_signed_cert.cert.cert_pem
+}
+
+output "private_key_pem" {
+  value = tls_private_key.private_key.private_key_pem
+}

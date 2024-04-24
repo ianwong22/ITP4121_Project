@@ -1,6 +1,6 @@
 # VPC
 resource "google_compute_network" "ITP4121_network" {
-    name                            = "${var.project_id}-tf-network"
+    name                            = "${var.project_id}-tf-network2"
     auto_create_subnetworks         = "false"
     delete_default_routes_on_create = false
 }
